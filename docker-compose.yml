@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  nodejs:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      MONGODB_URL: mongodb://mongodb-myapp:27017/myappdb?directConnection=true
+    depends_on:
+      - mongodb-myapp
+
+  mongodb-myapp:
+    image: mongo
+    ports:
+      - "27017:27017"
